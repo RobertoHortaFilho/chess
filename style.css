@@ -6,8 +6,8 @@
 }
 .board{
     margin: .4em auto 4em auto;
-    width: 320px;
-    height: 320px;
+    width: 560px;
+    height: 560px;
     background-color: black;
     border-bottom: 1px solid #666;
     border-right: 1px solid #666;
@@ -15,15 +15,16 @@
 }
 .slot{
     float: left;
-    width: 39px;
-    height: 39px;
+    width: 69px;
+    height: 69px;
     background-color: aquamarine;
-    border-top: 1px solid #666;
-    border-left: 1px solid #666;
-    background-image: url("https://images-na.ssl-images-amazon.com/images/I/81chkIhtUjL.png");
-    background-size: 40px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    
 }
-section{
-    width: 100px;
-    height: 100px;
+.horse{
+    background-image: url("./src/chess.png");
+    background-size: 55px;
+    background-repeat: no-repeat;
+    background-position: 7px;
 }
