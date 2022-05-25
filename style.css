@@ -1,0 +1,29 @@
+
+*{
+    background-color: blanchedalmond;
+    margin: 0px;
+    padding: 0px;
+}
+.board{
+    margin: .4em auto 4em auto;
+    width: 320px;
+    height: 320px;
+    background-color: black;
+    border-bottom: 1px solid #666;
+    border-right: 1px solid #666;
+
+}
+.slot{
+    float: left;
+    width: 39px;
+    height: 39px;
+    background-color: aquamarine;
+    border-top: 1px solid #666;
+    border-left: 1px solid #666;
+    background-image: url("https://images-na.ssl-images-amazon.com/images/I/81chkIhtUjL.png");
+    background-size: 40px;
+}
+section{
+    width: 100px;
+    height: 100px;
+}
