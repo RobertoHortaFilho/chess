@@ -54,7 +54,7 @@ function BoardFactory (){
                 onMouse.element = tile
                 disableOthersSelected()
                 tile.classList.add('selected')
-                kingMove()
+                pawnsMove()
                 
             }
         }else{
@@ -84,12 +84,39 @@ function BoardFactory (){
         return true
     }
 
+    function pawnsMove(){
+        const pawns = document.getElementsByClassName('selected')[0]
+        const pos = pawns.id.split('-')
+        const x = parseInt(pos[0])
+        const y = parseInt(pos[1])
+        if (x - 1 < 0) return;
+        const move = tiles[x-1][y]
+        if (cleanTile(move)) move.classList.add('move');
+    }
+
     function kingMove(){
         const king = document.getElementsByClassName('selected')[0]
         const pos = king.id.split('-')
-        let x = parseInt(pos[0]) + 1 
-        let y = parseInt(pos[1]) + 1
-        let move = tiles[x][y]
+        let x = parseInt(pos[0])
+        let y = parseInt(pos[1])
+        //diagonals
+        let move = tiles[x + 1][y + 1]
+        if (cleanTile(move)) move.classList.add('move')
+        move = tiles[x - 1][y - 1]
+        if (cleanTile(move)) move.classList.add('move')
+        move = tiles[x + 1][y - 1]
+        if (cleanTile(move)) move.classList.add('move')
+        move = tiles[x - 1][y + 1]
+        if (cleanTile(move)) move.classList.add('move')
+        //across
+        move = tiles[x - 1][y]
+        if (cleanTile(move)) move.classList.add('move')
+        move = tiles[x + 1][y]
+        if (cleanTile(move)) move.classList.add('move')
+        move = tiles[x][y + 1]
+        if (cleanTile(move)) move.classList.add('move')
+        move = tiles[x][y - 1]
+        if (cleanTile(move)) move.classList.add('move')
     }
 
     function bishopMove(){
