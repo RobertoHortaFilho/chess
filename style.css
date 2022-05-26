@@ -11,7 +11,6 @@
     background-color: black;
     border-bottom: 1px solid #666;
     border-right: 1px solid #666;
-
 }
 .slot{
     box-sizing: border-box;
@@ -23,11 +22,28 @@
     background-size: 55px;
     background-repeat: no-repeat;
     background-position: 7px;
+    transition: background-position .1s, background-size .1s;
+    
 }
+
+.slot:hover {
+    background-size: 60px;
+    background-position: 4px;
+}
+
 .horse{
     background-image: url("./src/horse.png");
 }
 .tower{
+    background-image: url("./src/tower.png");
+}
+.bishop{
+    background-image: url("./src/tower.png");
+}
+.king{
+    background-image: url("./src/horse.png");
+}
+.queen{
     background-image: url("./src/tower.png");
 }
 

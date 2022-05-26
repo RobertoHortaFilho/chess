@@ -54,7 +54,7 @@ function BoardFactory (){
                 onMouse.element = tile
                 disableOthersSelected()
                 tile.classList.add('selected')
-                bishopMove()
+                kingMove()
                 
             }
         }else{
@@ -83,6 +83,15 @@ function BoardFactory (){
 
         return true
     }
+
+    function kingMove(){
+        const king = document.getElementsByClassName('selected')[0]
+        const pos = king.id.split('-')
+        let x = parseInt(pos[0]) + 1 
+        let y = parseInt(pos[1]) + 1
+        let move = tiles[x][y]
+    }
+
     function bishopMove(){
         const bishop = document.getElementsByClassName('selected')[0]
         const pos = bishop.id.split('-')
@@ -132,18 +141,38 @@ function BoardFactory (){
     function towerMove(){
         const tower = document.getElementsByClassName('selected')[0]
         const pos = tower.id.split('-')
-        for (let i = 0; i < BOARDSIZE ; i++){
-            if (i != pos[0]){
-                let move = tiles[i][pos[1]]
-                move.classList.add('move')
-            }
+        
+        //x = linhas
+        //y = colunas
+        let x = parseInt(pos[0]) + 1
+
+        for (let i = x; i < BOARDSIZE ; i++){
+            let move = tiles[i][pos[1]];
+            if (!cleanTile(move)) break;
+            move.classList.add('move');
         }
-        for (let j = 0; j < BOARDSIZE ; j++){
-            if (j != pos[1]){
-                let move = tiles[pos[0]][j]
-                move.classList.add('move')
-            }
+
+        x = parseInt(pos[0]) - 1
+        for (let i = x; i >= 0 ; i--){
+            let move = tiles[i][pos[1]];
+            if (!cleanTile(move)) break;
+            move.classList.add('move');
         }
+
+
+        let y = parseInt(pos[1]) - 1
+        for (let i = y; i >= 0; i--){
+           let move = tiles[pos[0]][i];
+           if (!cleanTile(move)) break;
+           move.classList.add('move')
+        }
+        y = parseInt(pos[1]) + 1
+        for (let i = y; i < BOARDSIZE; i++){
+           let move = tiles[pos[0]][i];
+           if (!cleanTile(move)) break;
+           move.classList.add('move')
+        }
+        
 
     }
 
