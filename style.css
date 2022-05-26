@@ -14,17 +14,28 @@
 
 }
 .slot{
+    box-sizing: border-box;
     float: left;
-    width: 69px;
-    height: 69px;
+    width: 70px;
+    height: 70px;
     background-color: aquamarine;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    
-}
-.horse{
-    background-image: url("./src/chess.png");
+    border: 1px solid #00000090;
     background-size: 55px;
     background-repeat: no-repeat;
     background-position: 7px;
+}
+.horse{
+    background-image: url("./src/horse.png");
+}
+.tower{
+    background-image: url("./src/tower.png");
+}
+
+.selected {
+    border: 2px solid #000000;
+}
+
+.move {
+    border: 2px solid white;
+
 }
