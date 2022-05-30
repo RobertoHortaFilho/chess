@@ -77,7 +77,13 @@ function Pieces(boardTiles){
         const y = parseInt(pos[1])
         if (x - 1 < 0) return;
         const move = tiles[x-1][y]
-        if (cleanTile(move)) move.classList.add('move');
+        if (cleanTile(move)) {move.classList.add('move');}else{return}
+        if ( x == 6){
+            const doubleMove = tiles[x-2][y]
+            if (cleanTile(doubleMove)) {
+                doubleMove.classList.add('move')
+            }
+        }
     }
 
     function kingMove(){
@@ -86,7 +92,7 @@ function Pieces(boardTiles){
         let x = parseInt(pos[0])
         let y = parseInt(pos[1])
         let move
-        
+
         //diagonals
 
         if (x+1 < BOARDSIZE && y+1 <BOARDSIZE){
