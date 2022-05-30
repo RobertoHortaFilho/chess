@@ -94,7 +94,9 @@ function BoardFactory (){
     }
 
 
-    //"horse" "tower" "bishop" "king" "queen" "pawns"
+    // "horse" "tower" "bishop" "king" "queen" "pawns"
+    // setAtribute
+    // getAtribute
 
     function createHorse(position){
         tiles[position[0]][position[1]].classList.add("horse")
@@ -130,7 +132,7 @@ function BoardFactory (){
         
         tiles[7][3].classList.add("queen")
         tiles[7][4].classList.add("king")
-        
+
     }
 
 
