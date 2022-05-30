@@ -130,6 +130,7 @@ function BoardFactory (){
         
         tiles[7][3].classList.add("queen")
         tiles[7][4].classList.add("king")
+        
     }
 
 
