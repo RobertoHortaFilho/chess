@@ -86,6 +86,7 @@ function Pieces(boardTiles){
         let x = parseInt(pos[0])
         let y = parseInt(pos[1])
         let move
+        
         //diagonals
 
         if (x+1 < BOARDSIZE && y+1 <BOARDSIZE){
