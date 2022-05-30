@@ -38,13 +38,16 @@
     background-image: url("./src/tower.png");
 }
 .bishop{
-    background-image: url("./src/tower.png");
+    background-image: url("./src/bishop.png");
 }
 .king{
-    background-image: url("./src/horse.png");
+    background-image: url("./src/king.png");
 }
 .queen{
-    background-image: url("./src/tower.png");
+    background-image: url("./src/queen.ico");
+}
+.pawns{
+    background-image: url("./src/pawns.png");
 }
 
 .selected {

@@ -6,7 +6,12 @@ function Pieces(boardTiles){
     function cleanTile(tile){
         const classes = tile.className.split(' ')
         if (classes.includes('horse') ||
-            classes.includes('tower')){
+            classes.includes('tower') ||
+            classes.includes('bishop') ||
+            classes.includes('king') ||
+            classes.includes('queen') ||
+            classes.includes('pawns')
+            ){
             return false
         }
 
@@ -80,24 +85,49 @@ function Pieces(boardTiles){
         const pos = king.id.split('-')
         let x = parseInt(pos[0])
         let y = parseInt(pos[1])
+        let move
         //diagonals
-        let move = tiles[x + 1][y + 1]
-        if (cleanTile(move)) move.classList.add('move')
-        move = tiles[x - 1][y - 1]
-        if (cleanTile(move)) move.classList.add('move')
-        move = tiles[x + 1][y - 1]
-        if (cleanTile(move)) move.classList.add('move')
-        move = tiles[x - 1][y + 1]
-        if (cleanTile(move)) move.classList.add('move')
+
+        if (x+1 < BOARDSIZE && y+1 <BOARDSIZE){
+            move = tiles[x + 1][y + 1]
+            if (cleanTile(move)) move.classList.add('move')    
+        }
+
+        if ( x-1 >= 0 && y-1 >= 0){    
+            move = tiles[x - 1][y - 1]
+            if (cleanTile(move)) move.classList.add('move')
+        }
+
+        if ( x+1 < BOARDSIZE && y-1 >= 0){
+            move = tiles[x + 1][y - 1]
+            if (cleanTile(move)) move.classList.add('move')
+        }
+
+        if ( x-1 >= 0 && y+1 < BOARDSIZE){
+            move = tiles[x - 1][y + 1]
+            if (cleanTile(move)) move.classList.add('move')    
+        }
+
         //across
-        move = tiles[x - 1][y]
-        if (cleanTile(move)) move.classList.add('move')
-        move = tiles[x + 1][y]
-        if (cleanTile(move)) move.classList.add('move')
-        move = tiles[x][y + 1]
-        if (cleanTile(move)) move.classList.add('move')
-        move = tiles[x][y - 1]
-        if (cleanTile(move)) move.classList.add('move')
+        if ( x-1 >= 0){
+            move = tiles[x - 1][y]
+            if (cleanTile(move)) move.classList.add('move')    
+        }
+
+        if ( x+1 < BOARDSIZE){
+            move = tiles[x + 1][y]
+            if (cleanTile(move)) move.classList.add('move')    
+        }
+
+        if (y + 1 < BOARDSIZE){
+            move = tiles[x][y + 1]
+            if (cleanTile(move)) move.classList.add('move')    
+        }
+
+        if (y - 1 >= 0){
+            move = tiles[x][y - 1]
+            if (cleanTile(move)) move.classList.add('move')
+        }
     }
 
     function bishopMove(){
@@ -184,16 +214,16 @@ function Pieces(boardTiles){
 
     }
 
-
-
-    return {
-        horseMove,
-        bishopMove,
-        kingMove,
-        towerMove,
-        pawnsMove,
-        cleanTile,
+    const pieceMovement = {
+        horse : horseMove,
+        bishop : bishopMove,
+        tower : towerMove,
+        king : kingMove,
+        pawns : pawnsMove,
+        queen : () =>{bishopMove(); towerMove()}
     }
+
+    return pieceMovement
 
 }
 

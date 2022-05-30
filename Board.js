@@ -42,7 +42,13 @@ function BoardFactory (){
         const tile = event.target
         const classes = tile.className.split(' ')
         //console.log(classes)
-        if (classes.includes('horse')){ //adicionar as outras peças
+        if (classes.includes('horse') || 
+        classes.includes('bishop') ||
+        classes.includes('tower') ||
+        classes.includes('king') ||
+        classes.includes('queen') ||
+        classes.includes('pawns')
+        ){ //adicionar as outras peças
             if (classes.includes('selected')){
                 tile.classList.remove('selected')
                 onMouse.piece = '';
@@ -53,7 +59,7 @@ function BoardFactory (){
                 onMouse.element = tile
                 disableOthersSelected()
                 tile.classList.add('selected')
-                pieces.horseMove()
+                pieces[onMouse.piece]() //executa os possiveis movimentos da peça selecionada 
                 
             }
         }else{
@@ -88,7 +94,7 @@ function BoardFactory (){
     }
 
 
-
+    //"horse" "tower" "bishop" "king" "queen" "pawns"
 
     function createHorse(position){
         tiles[position[0]][position[1]].classList.add("horse")
@@ -96,15 +102,50 @@ function BoardFactory (){
     function createTower(position){
         tiles[position[0]][position[1]].classList.add("tower")
     }
+    function createBishop(position){
+        tiles[position[0]][position[1]].classList.add("bishop")
+    }
+    function createKing(position){
+        tiles[position[0]][position[1]].classList.add("king")
+    }
+    function createQueen(position){
+        tiles[position[0]][position[1]].classList.add("queen")
+    }
+    function createPawns(position){
+        tiles[position[0]][position[1]].classList.add("pawns")
+    }
 
-    window.disableOthers = disableOthersMove
-    
+    function createWhiteSide(){
+        for (let i = 0;  i < BOARDSIZE; i++){
+            tiles[6][i].classList.add('pawns')
+        }
+        tiles[7][0].classList.add("tower")
+        tiles[7][7].classList.add("tower")
 
+        tiles[7][1].classList.add("horse")
+        tiles[7][6].classList.add("horse")
+
+        tiles[7][2].classList.add("bishop")
+        tiles[7][5].classList.add("bishop")
+        
+        tiles[7][3].classList.add("queen")
+        tiles[7][4].classList.add("king")
+    }
+
+
+
+    //debug
+    window.createWhite = createWhiteSide
     
     return {
         tiles,
         createHorse,
         createTower,
+        createBishop,
+        createKing,
+        createQueen,
+        createQueen,
+        createPawns,
     }
 }
 
