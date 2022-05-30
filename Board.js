@@ -54,7 +54,7 @@ function BoardFactory (){
                 onMouse.element = tile
                 disableOthersSelected()
                 tile.classList.add('selected')
-                pawnsMove()
+                horseMove()
                 
             }
         }else{
@@ -82,6 +82,58 @@ function BoardFactory (){
         }
 
         return true
+    }
+
+    function horseMove(){
+        const horse = document.getElementsByClassName('selected')[0]
+        const pos = horse.id.split('-')
+        const x = parseInt(pos[0])
+        const y = parseInt(pos[1])
+        //right
+        if (y + 2 < BOARDSIZE){
+            if (x + 1 < BOARDSIZE){
+                let move = tiles[x+1][y+2]
+                if (cleanTile(move)) move.classList.add("move")
+            }
+            if (x - 1 >= 0){
+                let move = tiles[x-1][y+2]
+                if (cleanTile(move)) move.classList.add("move")
+            }
+        }
+        //left
+        if (y - 2 >= 0){
+            if (x + 1 < BOARDSIZE){
+                let move = tiles[x+1][y-2]
+                if (cleanTile(move)) move.classList.add("move")
+            }
+            if (x - 1 >= 0){
+                let move = tiles[x-1][y-2]
+                if (cleanTile(move)) move.classList.add("move")
+            }
+        }
+        //top
+        if (x - 2 >= 0){
+            if (y + 1 < BOARDSIZE){
+                let move = tiles[x-2][y+1]
+                if (cleanTile(move)) move.classList.add("move")
+            }
+            if (y - 1 >= 0){
+                let move = tiles[x-2][y-1]
+                if (cleanTile(move)) move.classList.add("move")
+            }
+        }
+        //botton
+        if (x + 2 < BOARDSIZE){
+            if (y + 1 < BOARDSIZE){
+                let move = tiles[x+2][y+1]
+                if (cleanTile(move)) move.classList.add("move")
+            }
+            if (y - 1 >= 0){
+                let move = tiles[x+2][y-1]
+                if (cleanTile(move)) move.classList.add("move")
+            }
+        }
+
     }
 
     function pawnsMove(){
