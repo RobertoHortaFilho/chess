@@ -24,6 +24,7 @@
     background-position: 7px;
     transition: background-position .1s, background-size .1s;
     
+    
 }
 
 .slot:hover {
@@ -49,6 +50,29 @@
 .pawns{
     background-image: url("./src/white/Whitepawn.png");
 }
+
+
+.horse-Black{
+    background-image: url("./src/black/BlackHorse.png");
+}
+.tower-Black{
+    background-image: url("./src/black/BlackTower.png");
+}
+.bishop-Black{
+    background-image: url("./src/black/Blackbishop.png");
+}
+.king-Black{
+    background-image: url("./src/black/BlackKing.png");
+}
+.queen-Black{
+    background-image: url("./src/black/BlackQueen.png");
+}
+.pawns-Black{
+    background-image: url("./src/black/BlackQueen.png");
+}
+
+
+
 
 .selected {
     border: 2px solid #000000;
