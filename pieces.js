@@ -5,12 +5,12 @@ function Pieces(boardTiles){
 
     function cleanTile(tile){
         const classes = tile.className.split(' ')
-        if (classes.includes('horse') ||
-            classes.includes('tower') ||
-            classes.includes('bishop') ||
-            classes.includes('king') ||
-            classes.includes('queen') ||
-            classes.includes('pawns')
+        if (classes.includes('horse-white') ||
+            classes.includes('tower-white') ||
+            classes.includes('bishop-white') ||
+            classes.includes('king-white') ||
+            classes.includes('queen-white') ||
+            classes.includes('pawns-white')
             ){
             return false
         }

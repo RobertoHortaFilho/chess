@@ -32,22 +32,22 @@
     background-position: 4px;
 }
 
-.horse{
+.horse-white{
     background-image: url("./src//white/WhiteHorse.png");
 }
-.tower{
+.tower-white{
     background-image: url("./src/white/WhiteTower.png");
 }
-.bishop{
+.bishop-white{
     background-image: url("./src/white/WhiteBishop.png");
 }
-.king{
+.king-white{
     background-image: url("./src/white/WhiteKing.png");
 }
-.queen{
+.queen-white{
     background-image: url("./src/white/WhiteQueen.png");
 }
-.pawns{
+.pawns-white{
     background-image: url("./src/white/Whitepawn.png");
 }
 

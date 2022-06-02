@@ -42,12 +42,12 @@ function BoardFactory (){
         const tile = event.target
         const classes = tile.className.split(' ')
         //console.log(classes)
-        if (classes.includes('horse') || 
-        classes.includes('bishop') ||
-        classes.includes('tower') ||
-        classes.includes('king') ||
-        classes.includes('queen') ||
-        classes.includes('pawns')
+        if (classes.includes('horse-white') || 
+        classes.includes('bishop-white') ||
+        classes.includes('tower-white') ||
+        classes.includes('king-white') ||
+        classes.includes('queen-white') ||
+        classes.includes('pawns-white')
         ){ //adicionar as outras peças
             if (classes.includes('selected')){
                 tile.classList.remove('selected')
@@ -59,7 +59,7 @@ function BoardFactory (){
                 onMouse.element = tile
                 disableOthersSelected()
                 tile.classList.add('selected')
-                pieces[onMouse.piece]() //executa os possiveis movimentos da peça selecionada 
+                pieces[onMouse.piece.split('-')[0]]() //executa os possiveis movimentos da peça selecionada 
                 
             }
         }else{
@@ -99,43 +99,43 @@ function BoardFactory (){
     // getAtribute
 
     function createHorse(position){
-        tiles[position[0]][position[1]].classList.add("horse")
+        tiles[position[0]][position[1]].classList.add("horse-white")
     }
     function createTower(position){
-        tiles[position[0]][position[1]].classList.add("tower")
+        tiles[position[0]][position[1]].classList.add("tower-white")
     }
     function createBishop(position){
-        tiles[position[0]][position[1]].classList.add("bishop")
+        tiles[position[0]][position[1]].classList.add("bishop-white")
     }
     function createKing(position){
-        tiles[position[0]][position[1]].classList.add("king")
+        tiles[position[0]][position[1]].classList.add("king-white")
     }
     function createQueen(position){
-        tiles[position[0]][position[1]].classList.add("queen")
+        tiles[position[0]][position[1]].classList.add("queen-white")
     }
     function createPawns(position){
-        tiles[position[0]][position[1]].classList.add("pawns")
+        tiles[position[0]][position[1]].classList.add("pawns-white")
     }
 
     function createWhiteSide(){
         for (let i = 0;  i < BOARDSIZE; i++){
-            tiles[6][i].classList.add('pawns')
+            createPawns([6,i])
         }
-        tiles[7][0].classList.add("tower")
-        tiles[7][7].classList.add("tower")
+        createTower([7,0])
+        createTower([7,7])
 
-        tiles[7][1].classList.add("horse")
-        tiles[7][6].classList.add("horse")
+        createHorse([7,1])
+        createHorse([7,6])
 
-        tiles[7][2].classList.add("bishop")
-        tiles[7][5].classList.add("bishop")
+        createBishop([7,2])
+        createBishop([7,5])
         
-        tiles[7][3].classList.add("queen")
-        tiles[7][4].classList.add("king")
+        createKing([7,4])
+        createQueen([7,3])
 
     }
 
-
+    createWhiteSide()
 
     //debug
     window.createWhite = createWhiteSide
