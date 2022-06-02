@@ -32,22 +32,22 @@
 }
 
 .horse{
-    background-image: url("./src/horse.png");
+    background-image: url("./src//white/WhiteHorse.png");
 }
 .tower{
-    background-image: url("./src/tower.png");
+    background-image: url("./src/white/WhiteTower.png");
 }
 .bishop{
-    background-image: url("./src/bishop.png");
+    background-image: url("./src/white/WhiteBishop.png");
 }
 .king{
-    background-image: url("./src/king.png");
+    background-image: url("./src/white/WhiteKing.png");
 }
 .queen{
-    background-image: url("./src/queen.ico");
+    background-image: url("./src/white/WhiteQueen.png");
 }
 .pawns{
-    background-image: url("./src/pawns.png");
+    background-image: url("./src/white/Whitepawn.png");
 }
 
 .selected {
