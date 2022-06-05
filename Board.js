@@ -135,9 +135,9 @@ function BoardFactory (){
 
     }
 
-    createWhiteSide()
-
+    
     //debug
+    createWhiteSide()
     window.createWhite = createWhiteSide
     
     return {
