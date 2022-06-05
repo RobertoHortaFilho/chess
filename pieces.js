@@ -5,17 +5,21 @@ function Pieces(boardTiles){
 
     function cleanTile(tile){
         const classes = tile.className.split(' ')
-        if (classes.includes('horse-white') ||
-            classes.includes('tower-white') ||
-            classes.includes('bishop-white') ||
-            classes.includes('king-white') ||
-            classes.includes('queen-white') ||
-            classes.includes('pawns-white')
-            ){
+        if (classes.length > 1){
             return false
         }
 
         return true
+    }
+    function attackerTile(tile, color = 'white'){
+        const classes = tile.className.split(' ')
+        if (classes.length > 1 && classes[1] != 'move'){
+            const pieceColor = classes[1].split('-')
+            if (color != pieceColor[1]){
+                return true
+            }
+        }
+        return false
     }
 
     function horseMove(){
@@ -24,6 +28,16 @@ function Pieces(boardTiles){
         const x = parseInt(pos[0])
         const y = parseInt(pos[1])
         //right
+
+            ///////////teste do attacker
+        let teste = tiles[0][0]
+        let cla = horse.className.split(' ')[1]
+        let c = cla.split('-')[1]
+        if (attackerTile(teste, c)){
+            teste.classList.add('move')
+        }
+            ///////////end
+
         if (y + 2 < BOARDSIZE){
             if (x + 1 < BOARDSIZE){
                 let move = tiles[x+1][y+2]

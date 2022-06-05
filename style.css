@@ -33,42 +33,42 @@
 }
 
 .horse-white{
-    background-image: url("./src//white/WhiteHorse.png");
+    background-image: url("./src//white/horse.png");
 }
 .tower-white{
-    background-image: url("./src/white/WhiteTower.png");
+    background-image: url("./src/white/tower.png");
 }
 .bishop-white{
-    background-image: url("./src/white/WhiteBishop.png");
+    background-image: url("./src/white/bishop.png");
 }
 .king-white{
-    background-image: url("./src/white/WhiteKing.png");
+    background-image: url("./src/white/king.png");
 }
 .queen-white{
-    background-image: url("./src/white/WhiteQueen.png");
+    background-image: url("./src/white/queen.png");
 }
 .pawns-white{
-    background-image: url("./src/white/Whitepawn.png");
+    background-image: url("./src/white/pawn.png");
 }
 
 
-.horse-Black{
-    background-image: url("./src/black/BlackHorse.png");
+.horse-black{
+    background-image: url("./src/black/horse.png");
 }
-.tower-Black{
-    background-image: url("./src/black/BlackTower.png");
+.tower-black{
+    background-image: url("./src/black/tower.png");
 }
-.bishop-Black{
-    background-image: url("./src/black/Blackbishop.png");
+.bishop-black{
+    background-image: url("./src/black/bishop.png");
 }
-.king-Black{
-    background-image: url("./src/black/BlackKing.png");
+.king-black{
+    background-image: url("./src/black/king.png");
 }
-.queen-Black{
-    background-image: url("./src/black/BlackQueen.png");
+.queen-black{
+    background-image: url("./src/black/queen.png");
 }
-.pawns-Black{
-    background-image: url("./src/black/BlackQueen.png");
+.pawns-black{
+    background-image: url("./src/black/pawn.png");
 }
 
 
