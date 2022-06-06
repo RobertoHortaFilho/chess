@@ -33,9 +33,16 @@ function BoardFactory (){
         }
     }
 
-    const pieces = Pieces(tiles)
+    function inCheck(){
+        console.log('alguem ficou em cheque nisso')
+    }
 
-    //
+    const pieces = Pieces(tiles, inCheck)
+
+    function verifyPosMove(tile, pieceName){
+        pieces[pieceName.split('-')[0]](tile, pieceName.split('-')[1])
+        disableOthersSelected()
+    }
 
 
     function _onClick(){
@@ -44,7 +51,7 @@ function BoardFactory (){
         console.log(classes)
 
         //attack
-        if (classes.includes('attack')){
+        if (classes.includes('attack')){ //mover para capturar a peça
             const pieceColor = classes[1]
             onMouse.element.classList.remove(onMouse.piece)
             tile.classList.remove(pieceColor)
@@ -57,7 +64,7 @@ function BoardFactory (){
             return
         }
 
-        if (classes.length > 1 && classes[1] != 'move'){
+        if (classes.length > 1 && classes[1] != 'move'){ //selecionar uma peça
             if (classes.includes('selected')){
                 tile.classList.remove('selected')
                 onMouse.piece = '';
@@ -68,18 +75,21 @@ function BoardFactory (){
                 onMouse.element = tile
                 disableOthersSelected()
                 tile.classList.add('selected')
-                pieces[onMouse.piece.split('-')[0]](onMouse.piece.split('-')[1]) //executa os possiveis movimentos da peça selecionada 
+                const color = onMouse.piece.split('-')[1]
+                pieces[onMouse.piece.split('-')[0]](tile, color) //executa os possiveis movimentos da peça selecionada 
                 
             }
         }else{
-            if (onMouse.piece != '' && onMouse.element){
-                //pode mover para la
-                if (classes.includes('move')){
+            if (onMouse.piece != '' && onMouse.element){    //movendo para uma casa sem captura
+                if (classes.includes('move')){              //pode mover para la
                     onMouse.element.classList.remove(onMouse.piece)
                     tile.classList.add(onMouse.piece)
+                    const pieceNameColor = onMouse.piece
                     onMouse.piece = ''
                     onMouse.element = undefined
                     disableOthersSelected()
+
+                    verifyPosMove(tile, pieceNameColor)
                 }
             }
         }
@@ -160,7 +170,6 @@ function BoardFactory (){
         createQueen([0,3],'black')
 
     }
-
     
     //debug
     createBoard()
