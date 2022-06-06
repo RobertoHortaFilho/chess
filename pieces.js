@@ -22,7 +22,7 @@ function Pieces(boardTiles){
         return false
     }
 
-    function horseMove(){
+    function horseMove(color = 'white'){
         const horse = document.getElementsByClassName('selected')[0]
         const pos = horse.id.split('-')
         const x = parseInt(pos[0])
@@ -34,7 +34,7 @@ function Pieces(boardTiles){
         let cla = horse.className.split(' ')[1]
         let c = cla.split('-')[1]
         if (attackerTile(teste, c)){
-            teste.classList.add('move')
+            teste.classList.add('attack')
         }
             ///////////end
 
@@ -84,23 +84,36 @@ function Pieces(boardTiles){
 
     }
 
-    function pawnsMove(){
+    function pawnsMove(color = 'white'){
         const pawns = document.getElementsByClassName('selected')[0]
         const pos = pawns.id.split('-')
         const x = parseInt(pos[0])
         const y = parseInt(pos[1])
-        if (x - 1 < 0) return;
-        const move = tiles[x-1][y]
+        if ((x - 1 < 0 && color == 'white') || (x+1 > BOARDSIZE && color == 'black')) return;
+        console.log('color', color)
+        let move
+        if (color == 'white' ) {
+            move = tiles[x-1][y]
+        }else{
+            move = tiles[x+1][y]
+        }
         if (cleanTile(move)) {move.classList.add('move');}else{return}
-        if ( x == 6){
+
+        //first move
+        if ( x == 6 && color == 'white'){
             const doubleMove = tiles[x-2][y]
             if (cleanTile(doubleMove)) {
+                doubleMove.classList.add('move')
+            }
+        }else if ( x == 1 && color == 'black'){
+            const doubleMove = tiles[x+2][y]
+            if (cleanTile(doubleMove)){
                 doubleMove.classList.add('move')
             }
         }
     }
 
-    function kingMove(){
+    function kingMove(color = 'white'){
         const king = document.getElementsByClassName('selected')[0]
         const pos = king.id.split('-')
         let x = parseInt(pos[0])
@@ -151,7 +164,7 @@ function Pieces(boardTiles){
         }
     }
 
-    function bishopMove(){
+    function bishopMove(color = 'white'){
         const bishop = document.getElementsByClassName('selected')[0]
         const pos = bishop.id.split('-')
         //right botton
@@ -197,7 +210,7 @@ function Pieces(boardTiles){
         
     }
 
-    function towerMove(){
+    function towerMove(color = 'white'){
         const tower = document.getElementsByClassName('selected')[0]
         const pos = tower.id.split('-')
         

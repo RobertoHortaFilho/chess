@@ -42,7 +42,22 @@ function BoardFactory (){
         const tile = event.target
         const classes = tile.className.split(' ')
         console.log(classes)
-        if (classes.length > 1 && classes[1] != 'move'){ //adicionar as outras peças
+
+        //attack
+        if (classes.includes('attack')){
+            const pieceColor = classes[1]
+            onMouse.element.classList.remove(onMouse.piece)
+            tile.classList.remove(pieceColor)
+            disableOthersSelected()
+            tile.classList.add(onMouse.piece)
+            onMouse.piece = ''
+            onMouse.element = undefined
+            
+            //console.log('peça removida no attack eh:', pieceColor)
+            return
+        }
+
+        if (classes.length > 1 && classes[1] != 'move'){
             if (classes.includes('selected')){
                 tile.classList.remove('selected')
                 onMouse.piece = '';
@@ -53,7 +68,7 @@ function BoardFactory (){
                 onMouse.element = tile
                 disableOthersSelected()
                 tile.classList.add('selected')
-                pieces[onMouse.piece.split('-')[0]]() //executa os possiveis movimentos da peça selecionada 
+                pieces[onMouse.piece.split('-')[0]](onMouse.piece.split('-')[1]) //executa os possiveis movimentos da peça selecionada 
                 
             }
         }else{
@@ -84,6 +99,10 @@ function BoardFactory (){
         const moveds = document.querySelectorAll('.move')
         for (let moved of moveds){
             moved.classList.remove('move')
+        }
+        const attacks = document.querySelectorAll('.attack')
+        for (let attack of attacks){
+            attack.classList.remove('attack')
         }
     }
 

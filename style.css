@@ -80,5 +80,8 @@
 
 .move {
     border: 2px solid white;
+}
 
+.attack {
+    border: 2px solid rgb(187, 24, 24)
 }
